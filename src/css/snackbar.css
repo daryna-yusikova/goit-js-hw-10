@@ -1,0 +1,139 @@
+.form {
+    margin-top: 36px;
+    font-family: "Montserrat", sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.form label {
+    font-weight: 400;
+        font-size: 16px;
+        line-height: 1.5;
+        letter-spacing: 0.04em;
+        color: #2e2f42;
+    margin-bottom: 8px;
+    display: flex;
+    flex-direction: column;
+align-items: flex-start;
+gap: 8px;
+
+
+}
+
+.delayinput {
+border: 1px solid #808080;
+border-radius: 4px;
+width: 360px;
+height: 40px;
+font-weight: 400;
+    font-size: 16px;
+    line-height: 1.5;
+    letter-spacing: 0.04em;
+    color: #2e2f42;
+padding: 8px 16px;
+box-sizing: border-box;
+outline: none;
+}
+
+.delayinput:hover {
+    border: 1px solid #000;
+
+}
+
+
+.delayinput:focus {
+    border: 1px solid #4e75ff;
+}
+
+.form fieldset {
+    border-radius: 4px;
+border: 1px solid #808080;
+    padding-left: 28px;
+    padding-bottom: 8px;
+    box-sizing: border-box;
+    width: 360px;
+        height: auto;
+        display: flex;
+        flex-direction: row;
+        margin: 0;
+    
+}
+
+
+.form fieldset:hover:focus {
+border: 1px solid #000;
+}
+
+.form legend {
+text-align: left;
+padding: 0px 5px;
+font-weight: 400;
+    font-size: 16px;
+    line-height: 1.5;
+    letter-spacing: 0.04em;
+    color: #2e2f42;
+}
+
+.radiobtn-conteiner {
+    display: flex;
+    gap: 48px;
+    margin: 0 auto;
+}
+
+
+
+.form fieldset label {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 0px;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.5;
+    color: #2e2f42;
+}
+
+.form fieldset input {
+    width: 20px;
+    height: 20px;
+    margin: 0;
+    accent-color: #4e75ff;
+    cursor: pointer;
+}
+
+
+.form button {
+    border-radius: 8px;
+        padding-block: 8px;
+        padding-inline: 16px;
+        width: 360px;
+        height: 40px;
+        background: #4e75ff;
+        font-weight: 500;
+            font-size: 16px;
+        
+            /* line-height: 24px; */
+            line-height: 1.5;
+            letter-spacing: 0.04em;
+            color: #fff;
+            border: none;
+            margin-top: 24px;
+            transition: all 0.3s ease;
+}
+
+.form button:hover {
+    background: #6c8cff;
+}
+
+.form button:focus {
+    background: #6c8cff;
+ 
+}
+
+
+
+
+

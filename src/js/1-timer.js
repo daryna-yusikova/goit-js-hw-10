@@ -1,11 +1,9 @@
 import flatpickr from 'flatpickr';
 import 'flatpickr/dist/flatpickr.min.css';
-// import iziToast from 'izitoast';
-// import 'izitoast/dist/css/iziToast.min.css';
+import iziToast from 'izitoast';
+import 'izitoast/dist/css/iziToast.min.css';
 
 let userSelectedDate = null;
-
-let startIsActive = false;
 
 const startBtn = document.querySelector('[data-start]');
 startBtn.disabled = true;
@@ -23,7 +21,11 @@ const options = {
     console.log(selectedDates[0]);
     userSelectedDate = selectedDates[0].getTime();
     if (Date.now() >= userSelectedDate) {
-      alert('Please choose a date in the future');
+      iziToast.error({
+        title: 'Error',
+        message: 'Please choose a date in the future',
+      });
+      startBtn.disabled = true;
     } else {
       startBtn.disabled = false;
     }
@@ -34,12 +36,13 @@ const inputFp = document.querySelector('#datetime-picker');
 flatpickr(inputFp, options);
 
 startBtn.addEventListener('click', handleStartBtn);
+let intervalId = null;
 
 function handleStartBtn(e) {
   e.preventDefault();
-  const intervalId = setInterval(() => startCountdown(userSelectedDate), 1000);
   inputFp.disabled = true;
   startBtn.disabled = true;
+  intervalId = setInterval(() => startCountdown(userSelectedDate), 1000);
 }
 
 function convertMs(ms) {
@@ -63,15 +66,30 @@ function convertMs(ms) {
 
 function startCountdown(selectedDate) {
   const deltaTime = selectedDate - Date.now();
-  const convertedDeltaTime = convertMs(deltaTime);
-  dayField.textContent = addLeadingZero(convertedDeltaTime.days);
-  hoursField.textContent = addLeadingZero(convertedDeltaTime.hours);
-  minutesField.textContent = addLeadingZero(convertedDeltaTime.minutes);
-  secondsField.textContent = addLeadingZero(convertedDeltaTime.seconds);
+  if (deltaTime <= 0) {
+    startBtn.disabled = false;
+    inputFp.disabled = false;
+    destroyInterval();
+    dayField.textContent = '00';
+    hoursField.textContent = '00';
+    minutesField.textContent = '00';
+    secondsField.textContent = '00';
+    return;
+  } else {
+    const convertedDeltaTime = convertMs(deltaTime);
+    dayField.textContent = addLeadingZero(convertedDeltaTime.days);
+    hoursField.textContent = addLeadingZero(convertedDeltaTime.hours);
+    minutesField.textContent = addLeadingZero(convertedDeltaTime.minutes);
+    secondsField.textContent = addLeadingZero(convertedDeltaTime.seconds);
+  }
 }
 
 function addLeadingZero(value) {
   return value.toString().padStart(2, '0');
+}
+
+function destroyInterval() {
+  clearInterval(intervalId);
 }
 
 // console.log(Date.now());

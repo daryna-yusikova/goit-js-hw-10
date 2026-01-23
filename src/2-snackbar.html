@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -10,6 +10,29 @@
   <body>
     <main>
       <div class="container">
+        <form class="form">
+          <label>
+            Delay (ms)
+            <input class="delayinput" type="number" name="delay" required />
+          </label>
+
+          <fieldset>
+            <legend>State</legend>
+            <div class="radiobtn-conteiner">
+              <label>
+                <input type="radio" name="state" value="fulfilled" required />
+                Fulfilled
+              </label>
+              <label>
+                <input type="radio" name="state" value="rejected" required />
+                Rejected
+              </label>
+            </div>
+          </fieldset>
+
+          <button type="submit">Create notification</button>
+        </form>
+
         <load src="./partials/back-link.html" />
       </div>
     </main>
